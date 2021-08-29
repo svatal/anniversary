@@ -7,7 +7,7 @@ import {
   FormSelect,
 } from "bobrilstrap";
 
-export function DatePicker(p: {
+export function DatePickerFormFields(p: {
   initialDate: Date;
   setDate: (date: Date) => void;
 }) {
@@ -27,46 +27,37 @@ export function DatePicker(p: {
 
   return (
     <>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "max-content auto",
-          gap: "10px",
-          alignItems: "center",
-        }}
-      >
-        <FormLabel for="year">Year</FormLabel>
-        <FormInput
-          type="datalist"
-          id="year"
-          list="yearOptions"
-          onChange={setYear}
-          value={year}
-        />
-        <FormDatalist id="yearOptions">
-          {Array(80)
-            .fill(0)
-            .map((_, i) => (
-              <FormOption>{i + 1950}</FormOption>
-            ))}
-        </FormDatalist>
-        <FormLabel for="month">Month</FormLabel>
-        <FormSelect id="month" onChange={setMonth} value={month}>
-          {Array(12)
-            .fill(0)
-            .map((_, i) => (
-              <FormOption>{i + 1}</FormOption>
-            ))}
-        </FormSelect>
-        <FormLabel for="day">Day</FormLabel>
-        <FormSelect id="day" onChange={setDay} value={day}>
-          {Array(maxDay)
-            .fill(0)
-            .map((_, i) => (
-              <FormOption>{i + 1}</FormOption>
-            ))}
-        </FormSelect>
-      </div>
+      <FormLabel for="year">Year</FormLabel>
+      <FormInput
+        type="datalist"
+        id="year"
+        list="yearOptions"
+        onChange={setYear}
+        value={year}
+      />
+      <FormDatalist id="yearOptions">
+        {Array(80)
+          .fill(0)
+          .map((_, i) => (
+            <FormOption>{i + 1950}</FormOption>
+          ))}
+      </FormDatalist>
+      <FormLabel for="month">Month</FormLabel>
+      <FormSelect id="month" onChange={setMonth} value={month}>
+        {Array(12)
+          .fill(0)
+          .map((_, i) => (
+            <FormOption>{i + 1}</FormOption>
+          ))}
+      </FormSelect>
+      <FormLabel for="day">Day</FormLabel>
+      <FormSelect id="day" onChange={setDay} value={day}>
+        {Array(maxDay)
+          .fill(0)
+          .map((_, i) => (
+            <FormOption>{i + 1}</FormOption>
+          ))}
+      </FormSelect>
     </>
   );
 }
