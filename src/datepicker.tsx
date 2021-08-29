@@ -7,10 +7,15 @@ import {
   FormSelect,
 } from "bobrilstrap";
 
-export function DatePicker(p: { setDate: (date: Date) => void }) {
-  const [year, setYear] = b.useState("1950");
-  const [month, setMonth] = b.useState("1");
-  const [day, setDay] = b.useState("1");
+export function DatePicker(p: {
+  initialDate: Date;
+  setDate: (date: Date) => void;
+}) {
+  const [year, setYear] = b.useState(p.initialDate.getFullYear().toString());
+  const [month, setMonth] = b.useState(
+    (p.initialDate.getMonth() + 1).toString()
+  );
+  const [day, setDay] = b.useState(p.initialDate.getDate().toString());
   const maxDay = new Date(+year, +month, +0).getDate();
   b.useEffect(() => {
     const date = new Date(+year, +month - 1, +day);

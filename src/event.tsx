@@ -1,9 +1,10 @@
 import * as b from "bobril";
 import { Anniversaries } from "./anniversaries";
 import { DatePicker } from "./datepicker";
+import { useDateInLocalStorage } from "./localStorage";
 
 export function EventDetail() {
-  const [date, setDate] = b.useState(() => new Date());
+  const [date, setDate] = useDateInLocalStorage("date", () => new Date());
   return (
     <div
       style={{
@@ -15,7 +16,7 @@ export function EventDetail() {
     >
       <div>
         <div>
-          <DatePicker setDate={setDate} />
+          <DatePicker initialDate={date} setDate={setDate} />
         </div>
         {date.toLocaleDateString()}
       </div>
