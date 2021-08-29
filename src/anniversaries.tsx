@@ -36,7 +36,13 @@ function Anniversary({ eventDate, unit }: { eventDate: Date; unit: TimeUnit }) {
       <div>
         Next ({anniversary} {unit}) anniversary:
       </div>
-      <div> {date.toLocaleDateString()}</div>
+      <div>
+        {isClose(date) ? (
+          <b>{date.toLocaleDateString()}</b>
+        ) : (
+          date.toLocaleDateString()
+        )}
+      </div>
     </>
   );
 }
@@ -73,4 +79,8 @@ function getUpdatedTime(date: Date, count: number, unit: TimeUnit) {
       assertNever(unit);
   }
   return d;
+}
+
+function isClose(date: Date) {
+  return moment(date).diff(new Date(), "years", true) < 1;
 }
